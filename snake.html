@@ -18,10 +18,15 @@
     <script src="./js/game.js"></script>
 
     <script>
-        'use strict';
+        // Start the game wrapped inside a closure in `strict` mode 
+        (() => {
+            'use strict';
 
-        const game = new Game();
-        game.init()
+            const game = new Game('#board')
+            
+            // Let'sssss play!
+            game.init()
+        })()
 
     </script>
 </body>

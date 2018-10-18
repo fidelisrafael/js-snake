@@ -1,7 +1,7 @@
 class Game {
-    constructor() {
+    constructor(canvasElement) {
         this.updateInterval = 100;
-        this.board = new BoardCanvas('#board')
+        this.board = new BoardCanvas(canvasElement)
         this.redraw = false
 
         this.inputMapping = {
@@ -12,9 +12,23 @@ class Game {
         }
     }
 
+
+    init() {
+        this.draw()
+        this.inputSetup()
+
+        setInterval(this.update.bind(this), this.updateInterval)
+    }
+
     draw() {
-        this.board.clear()
-        this.board.paint()
+        this.board.draw()
+    }
+
+    update() {
+        if(this.redraw) {
+            this.draw()
+            this.redraw = false
+        }
     }
 
     moveSnake(direction) {
@@ -23,48 +37,44 @@ class Game {
         switch (direction) {
             case 'up':
                 snake.moveUp()
-                break;
+                break
             case 'left':
                 snake.moveLeft()
-                break;
+                break
             case 'right':
                 snake.moveRight()
-                break;
+                break
             case 'down':
                 snake.moveDown()
-                break;
+                break
         }
 
-        this.detectFood()
+        this.detectFoodColision()
     }
 
-    detectFood() {
+    detectFoodColision() {
         const { snake, currentFood } = this.board
 
-        if ((snake.positionX == currentFood.positionX) && (snake.positionY == currentFood.positionY)) {
+        if (this.isInSameTile(snake, currentFood)) {
             snake.eatFood(currentFood)
 
             this.spawnRandomFood()
         } 
     }
 
+    isInSameTile(snake, food) {
+        return (snake.positionX == food.positionX) && (snake.positionY == food.positionY)
+    }
+
     spawnRandomFood() {
         this.board.setRandomCurrentFood()
     }
 
-    init() {
-        this.draw()
-        this.attachInput()
-        
-        setInterval(this.update.bind(this), this.updateInterval)
-    }
-
-    attachInput() {
+    inputSetup() {
         document.addEventListener('keyup', (event) => {
 
-            if(this.redraw == true) {
-                return
-            }
+            // Don't allow to move when is the Snake is already moving
+            if(this.redraw == true) return 
 
             const keyData = this.detectKeyFromCode(event.code)
 
@@ -86,11 +96,5 @@ class Game {
 
         return keyData
     }
-
-    update() {
-        if(this.redraw) {
-            this.draw()
-            this.redraw = false
-        }
-    }
+    
 }

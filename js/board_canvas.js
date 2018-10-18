@@ -1,19 +1,75 @@
 'use strict';
 
 class BoardCanvas {
-    constructor(canvasElement, size = 48) {
-        this.board = new Board()
-        this.snake = new Snake(this.board)
-        this.size = size
+    constructor(canvasElement, tileSize = 48) {
         this.canvas = document.querySelector(canvasElement)
         this.context = this.canvas.getContext('2d');
 
+        this.board = new Board()
+        this.snake = new Snake(this.board)
+        this.tileSize = tileSize
+
+        this.setCanvasDimensions()
         this.setRandomCurrentFood()
+    }
+
+    draw() {
+        this.clear()
+        this.drawTiles()
+        this.drawFood()
+        this.drawSnake()
+    }
+
+    drawSnake() {
+        this.drawObjectInTyle(this.snake)
+    }
+
+    drawObjectInTyle(object) {
+        const boardX = object.positionX * this.tileSize
+        const boardY = object.positionY * this.tileSize
+
+        this.context.fillStyle = object.color
+        
+        this.context.fillRect(boardX, boardY, this.tileSize, this.tileSize)
+
+        if(object.text) {
+            this.context.fillStyle = object.textColor || 'white'
+            this.context.fillText(object.text, boardX, boardY + this.tileSize/2)
+        }
+    }
+
+    drawFood() {
+        this.drawObjectInTyle(this.currentFood)
+    }
+
+    drawTiles() {
+        this.board.tiles.forEach((row, rowIndex) => {
+            row.forEach((line, lineIndex)  => {
+                const color = (lineIndex + rowIndex) % 2 == 0 ? 'red' : 'green'
+
+                this.drawTile(rowIndex, lineIndex, color)
+            })
+        })
+    }
+
+    drawTile(row, column, color) {
+        const y = row * this.tileSize
+        const x = column * this.tileSize
+       
+        this.context.fillStyle = color
+        this.context.fillRect(x, y, this.tileSize, this.tileSize)
+        this.context.fillText (column, x + this.tileSize / 2, y - this.tileSize / 2)
     }
 
     clear() {
         this.context.clearRect(0, 0, this.canvas.width , this.canvas.width)
     }
+
+    setCanvasDimensions() {
+        this.canvas.width = this.tileSize * this.board.tiles[0].length 
+        this.canvas.height = this.tileSize * this.board.tiles[0].length 
+    }
+
 
     setRandomCurrentFood() {
         const randomX = this.randomPositionWithNoObstructions(this.snake.positionX)
@@ -34,58 +90,5 @@ class BoardCanvas {
         }
 
         return random
-    }
-
-    paint() {
-        this.setCanvasDimensions()
-        this.paintTiles()
-        this.paintFood()
-        this.paintSnake()
-    }
-
-    paintSnake() {
-        this.paintObjectInTyle(this.snake)
-    }
-
-    paintObjectInTyle(object) {
-        const boardX = object.positionX * this.size
-        const boardY = object.positionY * this.size
-
-        this.context.fillStyle = object.color
-        
-        this.context.fillRect(boardX, boardY, this.size, this.size)
-
-        if(object.text) {
-            this.context.fillStyle = object.textColor || 'white'
-            this.context.fillText(object.text, boardX, boardY + this.size/2)
-        }
-    }
-
-    paintFood() {
-        this.paintObjectInTyle(this.currentFood)
-    }
-
-    paintTiles() {
-        this.board.tiles.forEach((row, rowIndex) => {
-            row.forEach((line, lineIndex)  => {
-                const color = (lineIndex + rowIndex) % 2 == 0 ? 'red' : 'green'
-
-                this.paintTile(rowIndex, lineIndex, color)
-            })
-        })
-    }
-
-    paintTile(row, column, color) {
-        const y = row * this.size
-        const x = column * this.size
-       
-        this.context.fillStyle = color
-        this.context.fillRect(x, y, this.size, this.size)
-        this.context.fillText (column, x + this.size / 2, y - this.size / 2)
-    }
-
-    setCanvasDimensions() {
-        this.canvas.width = this.size * this.board.tiles[0].length 
-        this.canvas.height = this.size * this.board.tiles[0].length 
     }
 }
