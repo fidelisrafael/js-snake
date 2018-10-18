@@ -1,0 +1,39 @@
+{
+  "name": "kobra-js",
+  "version": "0.0.1",
+  "description": "A very simple 'Snake' game built with ES6 using HTML5 canvas.",
+  "main": "index.js",
+  "scripts": {
+    "test": "jest tests/"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/fidelisrafael/js-snake.git"
+  },
+  "keywords": [
+    "snake",
+    "game",
+    "play",
+    "javascript",
+    "canvas",
+    "jogo",
+    "cobra",
+    "kobra",
+    "serpento"
+  ],
+  "author": "Rafael Fidelis <rafa_fidelis@yahoo.com.br>",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/fidelisrafael/js-snake/issues"
+  },
+  "jest": {
+    "collectCoverage": true,
+    "coverageReporters": ["json", "html"],
+    "collectCoverageFrom": ["lib/*.js"],
+    "coverageDirectory": "coverage"
+  },
+  "homepage": "https://github.com/fidelisrafael/js-snake#readme",
+  "devDependencies": {
+    "jest": "^23.6.0"
+  }
+}
