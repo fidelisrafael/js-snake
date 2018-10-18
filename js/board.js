@@ -17,6 +17,10 @@ class Board {
         ]
     }
 
+    get maxRows() {
+        return this.tiles[0].length
+    }
+
     setTile(row, column) {
     }
 }

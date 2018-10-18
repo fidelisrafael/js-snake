@@ -4,9 +4,8 @@ class BoardCanvas {
     constructor(canvasElement, tileSize = 48) {
         this.canvas = document.querySelector(canvasElement)
         this.context = this.canvas.getContext('2d');
-
         this.board = new Board()
-        this.snake = new Snake(this.board)
+        this.snake = new Snake(this)
         this.tileSize = tileSize
 
         this.setCanvasDimensions()
@@ -21,7 +20,11 @@ class BoardCanvas {
     }
 
     drawSnake() {
-        this.drawObjectInTyle(this.snake)
+        const snake = this.snake
+
+        snake.bodySegments.forEach((segment, index) => {
+            this.drawObjectInTyle(segment)
+        })
     }
 
     drawObjectInTyle(object) {
@@ -66,28 +69,23 @@ class BoardCanvas {
     }
 
     setCanvasDimensions() {
-        this.canvas.width = this.tileSize * this.board.tiles[0].length 
-        this.canvas.height = this.tileSize * this.board.tiles[0].length 
+        this.canvas.width = this.tileSize * this.board.maxRows 
+        this.canvas.height = this.tileSize * this.board.maxRows 
     }
 
 
     setRandomCurrentFood() {
+        // TODO: This must check ALL segments of Snake
         const randomX = this.randomPositionWithNoObstructions(this.snake.positionX)
         const randomY = this.randomPositionWithNoObstructions(this.snake.positionY)
 
-        this.currentFood = new Food(randomX, randomY, this.snake.length())
+        this.currentFood = new Food(randomX, randomY, this.snake.length)
     }
 
     randomPositionWithNoObstructions(obstruction) {
-        var random = null
-
-        while (true) {
-            random = Math.floor((Math.random() * 11))
-
-            if(random != obstruction) {
-                break
-            }
-        }
+        do {
+            var random = Math.floor((Math.random() * this.board.maxRows))
+        } while (random == obstruction)
 
         return random
     }

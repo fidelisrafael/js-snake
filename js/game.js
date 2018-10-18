@@ -1,7 +1,7 @@
 class Game {
     constructor(canvasElement) {
         this.updateInterval = 100;
-        this.board = new BoardCanvas(canvasElement)
+        this.canvasElement = canvasElement
         this.redraw = false
 
         this.inputMapping = {
@@ -10,8 +10,13 @@ class Game {
             'right': ['KeyD', 'ArrowRight'],
             'down': ['KeyS', 'ArrowDown'],
         }
+
+        this.reset()
     }
 
+    reset() {
+        this.board = new BoardCanvas(this.canvasElement)
+    }
 
     init() {
         this.draw()
@@ -49,21 +54,38 @@ class Game {
                 break
         }
 
+        this.detectBodySegmentColision()
         this.detectFoodColision()
+    }
+
+    detectBodySegmentColision() {
+        const { snake } = this.board
+
+        snake.bodySegments.forEach((segment) => {
+            if (segment.type != 'head') {
+                if (this.isInSameTile(snake.head, segment)) {
+                    this.gameOver()
+                }
+            }
+        })
+    }
+
+    gameOver() {
+        this.reset()
     }
 
     detectFoodColision() {
         const { snake, currentFood } = this.board
 
-        if (this.isInSameTile(snake, currentFood)) {
+        if (this.isInSameTile(snake.head, currentFood)) {
             snake.eatFood(currentFood)
 
             this.spawnRandomFood()
         } 
     }
 
-    isInSameTile(snake, food) {
-        return (snake.positionX == food.positionX) && (snake.positionY == food.positionY)
+    isInSameTile(object, otherObject) {
+        return (object.positionX == otherObject.positionX) && (object.positionY == otherObject.positionY)
     }
 
     spawnRandomFood() {
