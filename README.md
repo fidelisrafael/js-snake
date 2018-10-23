@@ -18,7 +18,8 @@ $ git clone https://github.com/fidelisrafael/js-snake.git
 
 2 - Enter in the directory and install the dependencies:
 
-Currently the only depencies is `jest` for testing.
+Currently the only dependencies are:
+- `jest` for testing.
 
 
 ```
@@ -28,7 +29,7 @@ $ npm install # or yarn install
 3 - Run the tests to make sure everything is working as expected:
 
 ```
-$ npm tests # yarn tests
+$ npm test # or yarn test
 ```
 
 4 - Just open the `snake.html` file in your browser, on mac you can use: `open snake.html` or on some Linux distros you can try: `see snake.html`.
