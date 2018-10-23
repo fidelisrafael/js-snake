@@ -1,4 +1,4 @@
-const SnakeSegment = require('./../lib/snake').SnakeSegment
+const SnakeSegment = require('./../lib/snake_segment')
 
 const HEAD_TYPE = 'head'
 const SEGMENT_TYPE = 'segment'
