@@ -13,33 +13,34 @@ A very simple Snake game built with `JS(ES6)` on top of `HTML5 <canvas>`.
 
 Currently there is a more elaborated game created on top of this one, you can check it out at: ["Snake Crush"](https://jssnake-crush.herokuapp.com/index.html)
 
-PS: This project is **almost finished** but for now it is still in development.
+_OBS: This project is **almost finished** but for now it is still in development._
 
 ---
 
 ## How to run & Development setup
 
-1 - Clone this repository:
+#### 1 - Clone this repository:
 
 ```bash
 $ git clone https://github.com/fidelisrafael/js-snake.git 
 ```
 
-2 - Enter in the directory and install the dependencies:
+#### 2 - Enter in the directory and install the dependencies:
 
 ```bash
-$ npm install # or yarn install
-$ npm install -g browserify # to bundle files
+$ yarn install # or npm install
 ```
 
-Currently the only dependencies are:
-- `jest` for testing.
-- `browserify` for bundling ES6 scripts to Browser
+Currently all dependencies are related to the development/test enviroment, they're:
 
-3 - Run the tests to make sure everything is working as expected:
+- [`jest`](https://jestjs.io) for testing.
+- [`browserify`](https://github.com/browserify/browserify), [`budo`](https://github.com/mattdesl/budo), [`exorcist`](https://github.com/thlorenz/exorcist) and [`tinify`](https://github.com/browserify/tinyify) for bundling ES6 scripts to Browser
+
+
+#### 3 - Run the tests to make sure everything is working as expected:
 
 ```bash
-$ npm test # or yarn test
+$ yarn test # or yarn test
 
 > jest tests/
 
@@ -47,37 +48,46 @@ $ npm test # or yarn test
 # Tests:       54 passed, 54 total
 ```
 
-4 - This application uses [`Browserify`](https://github.com/browserify/browserify) to bundle a valid JS code for Browsers from the ES6 code at `./lib` folder. To check if the build is properly working, just run:
+#### 4 - Build the application
+
+_This application uses [`Browserify`](https://github.com/browserify/browserify) to bundle a valid JS code for Browsers from the ES6 code at `./lib` folder:_
+
+To check if the build is properly working, just run
 
 ```bash
-$ npm run build && npm run build_dev
+$ yarn build && yarn build_dev # or npm run build && npm run build_dev
 
 > File "public/bundle.js" generated.
 > File "public/bundle.dev.js" generated.
 ```
 
-5 - If you receive the output above that means that everything is working just as expected, that's great! Now, you can just run the development server (this will open a new browser window):
+If you receive the output above that means that everything is working just as expected, that's great!
+
+
+#### 5 - Now, you can just run the development server:
+
+_OBS: This will open a new window on your default browser_
 
 ```bash
-$ npm run dev # or yarn run dev
+$ yarn dev # or npm run dev
 ```
 
 OBS: We use [`Budo`](https://github.com/mattdesl/budo) as the development server with live-reload support.
 
-6 - Enjoy it ;)
+### 6 - Enjoy it :) - And send PR's \o/
 
 ---
 
-###  Codebase API:
+##  Codebase API:
 
-To run the game through JS you can just do as a follow:
+To run the game through a JS script you can just do as a follow:
 
 ```js
 
 // new Game(canvasElement, rows = 12, lines = 12, tileSize = 48, debugMode = false)
 const game = new Game('#board', 24, 24)
             
-// Start the game loop
+// Start the infinite game loop
 game.init()
 ```
 
@@ -94,7 +104,7 @@ setInterval(() => {
 }, 500) // updates each 500ms
 ```
 
-There are many other API functions since this game was created with extensibility in mind, for example you can just redraw the current food on the map using: `game.spawnRandomFood()`, or finish the game at any point calling: `game.gameOver()`.
+There are many other API functions since this game was created with extensibility in mind, for example you can just redraw the current food at some random position on the map using: `game.spawnRandomFood()`, or finish the game at any point calling: `game.gameOver()`.
 
 This section will be better documented with more examples and more details sooner.
 
