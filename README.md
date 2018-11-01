@@ -105,7 +105,7 @@ setInterval(() => {
 
 There are many other API functions since this game was created with extensibility in mind, for example you can just redraw the current food at some random position on the map using: `game.spawnRandomFood()`, or finish the game at any point calling: `game.gameOver()`.
 
-This section will be better documented with more examples and more details sooner.
+This section will be better documented with more examples and more details, sooner...or later.
 
 ---
 
@@ -119,8 +119,8 @@ http://localhost:9966/#debug
 
 ![Snake JS - Debug Mode](./screenshots/jssnake-debug.png)
 
-As you can see, each fragment of the Snake will have their identification and the same happens with the food as well. The "tiles"(red and green) are the tilesets of the "map/board" where the Snake will be abble to moviment through, and where the food will appear when needed. ß
-Note that each tile is basically disposed in a X/Y coordinates in a Coordinate(Cartesian) Plane. For example, the tileset number `3` is on `X = 3 | Y = 0`, the tileset `12` is on `X = 2 | Y = 5`
+As you can see, each fragment of the Snake will have their identification and the same happens with the food as well. The "tiles"(red and green) are the "parts" of the "map/board" where the Snake will be abble to moviment through, and where the food will appear when needed.
+Note that each tile is basically disposed in a X/Y coordinates in a Coordinate(Cartesian) Plane. For example, the tile number `3` is on `X = 3 | Y = 0`, the tile `12` is on `X = 2 | Y = 5`
 
 ---
 
