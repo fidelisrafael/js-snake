@@ -19,7 +19,7 @@ describe('Snake', () => {
     it('must initialize in the first tile', () => {
         const snake = new Snake(CANVAS)
 
-        expect(snake.positions).toEqual({ x: 0, y: 0 })
+        expect(snake.headPositions).toEqual({ x: 0, y: 0 })
     })
 
     it('must initialize with empty ate foods Array', () => {
