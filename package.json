@@ -46,6 +46,7 @@
     "browserify": "^16.2.3",
     "exorcist": "^1.0.1",
     "jest": "^23.6.0",
-    "tinyify": "^2.4.3"
+    "tinyify": "^2.4.3",
+    "budo": "^11.5.0"
   }
 }
