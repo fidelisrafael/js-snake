@@ -64,10 +64,10 @@ describe('SnakeSegment', () => {
         })
 
         describe('segment.color', () => {
-            test('it must be blue by default', () => {
+            test('it must be black by default', () => {
                 const segment = new SnakeSegment(0, 10, SEGMENT_TYPE)
 
-                expect(segment.color).toEqual('blue')
+                expect(segment.color).toEqual('black')
             })
 
             test('it must allow to overwrite it', () => {
