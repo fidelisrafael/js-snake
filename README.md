@@ -15,12 +15,12 @@ A very simple Snake game built with `JS(ES6)` and `HTML5 <canvas>`.
 1 - Clone this repository:
 
 ```bash
-$ git clone https://github.com/fidelisrafael/js-snake.git
+$ git clone https://github.com/fidelisrafael/js-snake.git 
 ```
 
 2 - Enter in the directory and install the dependencies:
 
-```
+```bash
 $ npm install # or yarn install
 $ npm install -g browserify # to bundle files
 ```
@@ -31,7 +31,7 @@ Currently the only dependencies are:
 
 3 - Run the tests to make sure everything is working as expected:
 
-```
+```bash
 $ npm test # or yarn test
 
 > jest tests/
@@ -42,7 +42,7 @@ $ npm test # or yarn test
 
 4 - This application uses [`Browserify`](https://github.com/browserify/browserify) to bundle a valid JS code for Browsers from the ES6 code at `./lib` folder. To check if the build is properly working, just run:
 
-```
+```bash
 $ npm run build && npm run build_dev
 
 > File "public/bundle.js" generated.
@@ -51,7 +51,7 @@ $ npm run build && npm run build_dev
 
 5 - If you receive the output above that means that everything is working just as expected, that's great! Now, you can just run the development server (this will open a new browser window):
 
-```
+```bash
 $ npm run dev # or yarn run dev
 ```
 
