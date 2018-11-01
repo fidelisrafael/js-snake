@@ -1,8 +1,8 @@
 (() => {
-    'use strict'
+  'use strict'
 
-    console.log('Game is available through window.Game.')
+  console.log('Game is available through window.Game.')
 
-    // export game as global object
-    window.Game = require('./index.js')
+  // export game as global object
+  window.Game = require('./index.js')
 })()

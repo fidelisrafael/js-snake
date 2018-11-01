@@ -24,19 +24,18 @@
     <script src="./bundle.dev.js"></script>
 
     <script>
-        // Start the game wrapped inside a closure in `strict` mode 
-        var game
+      // Start the game wrapped inside a closure in `strict` mode 
+      var game
 
-        (() => {
-            'use strict';
+      (() => {
+        'use strict';
 
-            game = new Game('#board')
-            game.debugMode = window.location.hash == '#debug'
-            
-            // Let'sssss play!
-            game.init()
-        })()
-
+        game = new Game('#board')
+        game.debugMode = window.location.hash == '#debug'
+        
+        // Let'sssss play!
+        game.init()
+      })()
     </script>
 </body>
 </html>
