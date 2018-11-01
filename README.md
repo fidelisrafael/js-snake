@@ -1,12 +1,19 @@
 # js-snake
 
-[![forthebadge](https://forthebadge.com/images/badges/made-with-javascript.svg)](https://forthebadge.com) [![forthebadge](https://forthebadge.com/images/badges/built-by-developers.svg)](https://forthebadge.com) [![forthebadge](https://forthebadge.com/images/badges/powered-by-electricity.svg)](https://forthebadge.com)
+[![forthebadge](https://forthebadge.com/images/badges/made-with-javascript.svg)](https://forthebadge.com) [![forthebadge](https://forthebadge.com/images/badges/powered-by-electricity.svg)](https://forthebadge.com)
+[![forthebadge](https://forthebadge.com/images/badges/60-percent-of-the-time-works-every-time.svg)](https://forthebadge.com)
 
 ---
 
-A very simple Snake game built with `JS(ES6)` and `HTML5 <canvas>`.
+A very simple Snake game built with `JS(ES6)` on top of `HTML5 <canvas>`.
 
 ![Game preview](./screenshots/jssnake-development.png)
+
+[![forthebadge](https://forthebadge.com/images/badges/check-it-out.svg)](https://jssnake-crush.herokuapp.com/index.html)
+
+Currently there is a more elaborated game created on top of this one, you can check it out at: ["Snake Crush"](https://jssnake-crush.herokuapp.com/index.html)
+
+PS: This project is **almost finished** but for now it is still in development.
 
 ---
 
@@ -61,6 +68,38 @@ OBS: We use [`Budo`](https://github.com/mattdesl/budo) as the development server
 
 ---
 
+###  Codebase API:
+
+To run the game through JS you can just do as a follow:
+
+```js
+
+// new Game(canvasElement, rows = 12, lines = 12, tileSize = 48, debugMode = false)
+const game = new Game('#board', 24, 24)
+            
+// Start the game loop
+game.init()
+```
+
+If you want to manage the main game loop by yourself, you'll need to call some functions by hand, example:
+
+```js
+const game = new Game('#board')
+
+setInterval(() => {
+    console.log("Updating game...")
+
+    // Dispatch the request to redraw things on canvas
+    game.update()
+}, 500) // updates each 500ms
+```
+
+There are many other API functions since this game was created with extensibility in mind, for example you can just redraw the current food on the map using: `game.spawnRandomFood()`, or finish the game at any point calling: `game.gameOver()`.
+
+This section will be better documented with more examples and more details sooner.
+
+---
+
 ### Debug Mode
 
 You can run this application in debug mode to help you to understand what's going on the details. Just pass the `#debug` hash-fragment on URL when you open `index.html` on the browser, eg:
@@ -80,6 +119,7 @@ Note that each tile is basically disposed in a X/Y coordinates in a Coordinate(C
 ## :calendar: Roadmap <a name="roadmap"></a>
 
 - :white_medium_small_square: Finish writing tests.
+- :white_medium_small_square: Write better documentation for the codebase API.
 - :white_medium_small_square: Make a online demo available on Github Pages.
 - :white_medium_small_square: Added window(HUD) with current points(`snake.length`).
 - :white_medium_small_square: Try to render it in different sizes to detected rendering errors.
