@@ -42,8 +42,7 @@ Currently all dependencies are related to the development/test enviroment, they'
 ```bash
 $ yarn test # or yarn test
 
-> jest tests/
-
+# > jest tests/
 # Test Suites: 3 passed, 3 total
 # Tests:       54 passed, 54 total
 ```
@@ -57,8 +56,8 @@ To check if the build is properly working, just run
 ```bash
 $ yarn build && yarn build_dev # or npm run build && npm run build_dev
 
-> File "public/bundle.js" generated.
-> File "public/bundle.dev.js" generated.
+# > File "public/bundle.js" generated.
+# > File "public/bundle.dev.js" generated.
 ```
 
 If you receive the output above that means that everything is working just as expected, that's great!
@@ -129,9 +128,9 @@ Note that each tile is basically disposed in a X/Y coordinates in a Coordinate(C
 ## :calendar: Roadmap <a name="roadmap"></a>
 
 - :white_medium_small_square: Finish writing tests.
+- :white_medium_small_square: Add a window(HUD) with the current user points(`snake.length`).
 - :white_medium_small_square: Write better documentation for the codebase API.
 - :white_medium_small_square: Make a online demo available on Github Pages.
-- :white_medium_small_square: Added window(HUD) with current points(`snake.length`).
 - :white_medium_small_square: Try to render it in different sizes to detected rendering errors.
 - :white_medium_small_square: Update this Roadmap with more plans.
 
