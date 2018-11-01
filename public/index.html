@@ -4,18 +4,24 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>JS Snake</title>
+    <title>ES6 JS Snake</title>
+    <style>
+        .game-wrapper {
+            margin: 0 auto;
+        }
+        .board-canvas-wrapper {
+            border: 2px solid #333;
+        }
+    </style>
 </head>
 <body>
-    <canvas id='board'>
+    <div class='game-wrapper'>
+        <div class="board-canvas-wrapper">
+            <canvas id='board'></canvas>
+        </div>
+    </div>
 
-    </canvas>
-
-    <script src="./js/board.js"></script>
-    <script src="./js/snake.js"></script>
-    <script src="./js/food.js"></script>
-    <script src="./js/board_canvas.js"></script>
-    <script src="./js/game.js"></script>
+    <script src="./bundle.dev.js"></script>
 
     <script>
         // Start the game wrapped inside a closure in `strict` mode 
@@ -25,6 +31,7 @@
             'use strict';
 
             game = new Game('#board')
+            game.debugMode = window.location.hash == '#debug'
             
             // Let'sssss play!
             game.init()

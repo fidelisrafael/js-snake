@@ -1,0 +1,52 @@
+{
+  "name": "kobra-js",
+  "version": "0.0.1",
+  "description": "A very simple 'Snake' game built with ES6 using HTML5 canvas.",
+  "main": "index.js",
+  "scripts": {
+    "test": "jest tests/",
+    "dev": "./node_modules/.bin/budo browser.js:bundle.dev.js --dir public/ --live --open --onupdate 'echo \"updated\"' -- --debug",
+    "build": "./node_modules/.bin/browserify -p tinyify browser.js -o public/bundle.js && echo 'File \"public/bundle.js\" generated.'",
+    "build_dev": "./node_modules/.bin/browserify --debug browser.js | ./node_modules/.bin/exorcist public/bundle.dev.js.map > public/bundle.dev.js  && echo 'File \"public/bundle.dev.js\" generated.'",
+    "_postbuild": "npm run build_dev"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/fidelisrafael/js-snake.git"
+  },
+  "keywords": [
+    "snake",
+    "game",
+    "play",
+    "javascript",
+    "canvas",
+    "jogo",
+    "cobra",
+    "kobra",
+    "serpento"
+  ],
+  "author": "Rafael Fidelis <rafa_fidelis@yahoo.com.br>",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/fidelisrafael/js-snake/issues"
+  },
+  "jest": {
+    "collectCoverage": true,
+    "coverageReporters": [
+      "json",
+      "html"
+    ],
+    "collectCoverageFrom": [
+      "lib/*.js"
+    ],
+    "coverageDirectory": "coverage"
+  },
+  "homepage": "https://github.com/fidelisrafael/js-snake#readme",
+  "devDependencies": {
+    "browserify": "^16.2.3",
+    "exorcist": "^1.0.1",
+    "jest": "^23.6.0",
+    "tinyify": "^2.4.3",
+    "budo": "^11.5.0"
+  }
+}
